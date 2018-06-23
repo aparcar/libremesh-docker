@@ -1,0 +1,21 @@
+sudo: required
+
+notifications:
+  email: false
+
+services:
+  - docker
+
+before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+script:
+  - docker build -t "$DOCKER_USERNAME/libremesh:$TAG"
+        --build-arg "DOCKER_USERNAME=$DOCKER_USERNAME"
+        --build-arg "TAG=$TAG" .
+  - docker push "$DOCKER_USERNAME/libremesh:$TAG"
+
+env:
+  matrix:
+  - TAG="latest" 
+  - TAG="stable" 
