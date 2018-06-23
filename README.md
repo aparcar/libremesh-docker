@@ -12,7 +12,8 @@ Available tags:
 To dive into the image run the following command:
 
 ```bash
-docker run -it aparcar/libremesh:latest sh
+docker run --name libretest aparcar/libremesh:latest
+docker exec -it libretest sh
 ```
 
 Some stuff may fail, please report by creating an issue!
@@ -30,5 +31,6 @@ docker build -t "libremesh:$TAG" --build-arg "TAG=$TAG" .
 To run the self build package run 
 
 ```bash
-docker run -it libremesh:$TAG sh
+docker run -d --name libretest libremesh:$TAG
+docker exec -it libretest sh
 ```

@@ -1,6 +1,6 @@
 ARG DOCKER_USERNAME
 ARG TAG
-FROM ${DOCKER_USERNAME}/openwrt:${TAG}
+FROM aparcar/openwrt:${TAG}
 
 ARG TAG
 
